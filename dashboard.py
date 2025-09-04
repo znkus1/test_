@@ -49,20 +49,21 @@ def make_template_bytes():
     buf.seek(0)
     return buf
 
-st.markdown("### 1) 템플릿")
-st.download_button(
-    "⬇️ 템플릿 엑셀 다운로드",
-    data=make_template_bytes().read(),
-    file_name="template.xlsx",
-    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-)
+with st.sidebar:
+    st.markdown("### 1) 템플릿")
+    st.download_button(
+        "⬇️ 템플릿 엑셀 다운로드",
+        data=make_template_bytes().read(),
+        file_name="template.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
 
-# ---------------- 단일 엑셀 업로드 ----------------
-st.markdown("### 2) 파일 업로드")
-template_xlsx = st.file_uploader("template.xlsx 업로드", type=["xlsx"])
+    # ---------------- 단일 엑셀 업로드 ----------------
+    st.markdown("### 2) 파일 업로드")
+    template_xlsx = st.file_uploader("template.xlsx 업로드", type=["xlsx"])
 
-model_path = st.text_input("model.py 경로", str(Path("model.py").resolve()))
-workdir = str(Path(model_path).parent.resolve())
+    model_path = st.text_input("model.py 경로", str(Path("model.py").resolve()))
+    workdir = str(Path(model_path).parent.resolve())
 
 def kv_to_dict(df):
     out = {}
@@ -263,3 +264,4 @@ if st.button("▶ 모델 실행"):
                     zf.write(p, arcname=p.name)
             buf.seek(0)
             st.download_button("📦 결과 ZIP 다운로드", buf, file_name="model_outputs.zip", mime="application/zip")
+
