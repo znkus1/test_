@@ -8,7 +8,7 @@ from pathlib import Path
 st.set_page_config(page_title="서울보증 SAA모델", layout="wide")
 st.title("📄 서울보증 SAA모델")
 
-ASSETS = ["Fixed-Income","Global FI","Domestic Eq","Global Eq",
+ASSETS = ["Risk-Free","Fixed-Income","Global FI","Domestic Eq","Global Eq",
           "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"]
 RISKY9 = ["Fixed-Income","Global FI","Domestic Eq","Global Eq",
           "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"]
@@ -264,5 +264,6 @@ if st.button("▶ 모델 실행"):
                     zf.write(p, arcname=p.name)
             buf.seek(0)
             st.download_button("📦 결과 ZIP 다운로드", buf, file_name="model_outputs.zip", mime="application/zip")
+
 
 
