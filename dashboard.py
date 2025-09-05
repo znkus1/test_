@@ -8,10 +8,10 @@ from pathlib import Path
 st.set_page_config(page_title="서울보증 SAA모델", layout="wide")
 st.title("📄 서울보증 SAA모델")
 
-ASSETS = ["Risk-Free","Fixed-Income","Global FI","Domestic Eq","Global Eq",
-          "Private Eq","Private Credit","Hedgefund","Infrastructure","Real Estate"]
+ASSETS = ["Fixed-Income","Global FI","Domestic Eq","Global Eq",
+          "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"]
 RISKY9 = ["Fixed-Income","Global FI","Domestic Eq","Global Eq",
-          "Private Eq","Private Credit","Hedgefund","Infrastructure","Real Estate"]
+          "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"]
 
 # ---------------- 템플릿 엑셀 생성 ----------------
 def make_template_bytes():
@@ -264,4 +264,5 @@ if st.button("▶ 모델 실행"):
                     zf.write(p, arcname=p.name)
             buf.seek(0)
             st.download_button("📦 결과 ZIP 다운로드", buf, file_name="model_outputs.zip", mime="application/zip")
+
 
