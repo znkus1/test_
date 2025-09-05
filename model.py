@@ -367,7 +367,13 @@ if __name__ == "__main__":
         r, v, s = port_metrics(best_path[t], MUy[t], Sigma_list[t], RF_ANN)
         retsY.append(r[0]); volsY.append(v[0]); srY.append(s[0])
 
+    ORDER = [
+    "Risk-Free","Domestic Eq","Global Eq","Fixed-Income","Global FI",
+    "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"
+    ]
+    
     weights_df = pd.DataFrame(best_path, columns=assets, index=years).round(6)
+    weights_df = weights_df.reindex(columns=ORDER)
     metrics_df = pd.DataFrame({"연 기대수익률": retsY, "연 변동성": volsY, "샤프비율": srY}, index=years).round(6)
     prob_tbl = path_prob_table_yearly(best_path, MUy, VOLy, rho_dg, i_dom, i_glb,
                                       AUM_KRW, LOSS_THRESHOLD_KRW, PROB_LIMIT_VAR)\
@@ -403,4 +409,5 @@ if __name__ == "__main__":
     sf_row.to_csv("shortfall_results.csv", encoding="utf-8-sig")
     print("\nSaved: transition_5y_weights.csv, transition_5y_metrics.csv, "
           "transition_5y_equityVaR_prob.csv, target_equityVaR_prob.csv, shortfall_results.csv")
+
 
