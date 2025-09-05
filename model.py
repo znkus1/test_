@@ -17,7 +17,7 @@ from scipy.stats import norm
 # ---------------------------------------------------------
 ASSETS = [
     "Risk-Free","Fixed-Income","Global FI","Domestic Eq","Global Eq",
-    "Private Eq","Private Credit","Hedgefund","Infrastructure","Real Estate"
+    "Private Credit","Private Eq","Real Estate","Infrastructure","Hedgefund"
 ]
 
 # (A) 기준(한 해) μ, σ — 연도별을 따로 주지 않으면 이 값을 5년 동일 적용
@@ -403,3 +403,4 @@ if __name__ == "__main__":
     sf_row.to_csv("shortfall_results.csv", encoding="utf-8-sig")
     print("\nSaved: transition_5y_weights.csv, transition_5y_metrics.csv, "
           "transition_5y_equityVaR_prob.csv, target_equityVaR_prob.csv, shortfall_results.csv")
+
